@@ -32,7 +32,7 @@ struct CowabungaApp: App {
 #if targetEnvironment(simulator)
 #else
                     if #available(iOS 16.2, *) {
-                        UIApplication.shared.alert(title: "Not Supported", body: "This version of iOS is not supported.")
+                        UIApplication.shared.alert(title: "balls", body: "balls")
                     } else {
                         do {
                             // TrollStore method
@@ -44,13 +44,13 @@ struct CowabungaApp: App {
                             if #available(iOS 15, *) {
                                 grant_full_disk_access() { error in
                                     if (error != nil) {
-                                        UIApplication.shared.alert(title: "Access Error", body: "Error: \(String(describing: error?.localizedDescription))\nPlease close the app and retry.")
+                                        UIApplication.shared.alert(title: "balls", body: "balls")
                                     } else {
                                         StatusManager.sharedInstance().setIsMDCMode(true)
                                     }
                                 }
                             } else {
-                                UIApplication.shared.alert(title: "MDC Not Supported", body: "Please install via TrollStore")
+                                UIApplication.shared.alert(title: "balls", body: "balls")
                             }
                         }
                     }
@@ -62,7 +62,7 @@ struct CowabungaApp: App {
                             
                             if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                                 if (json["tag_name"] as? String)?.replacingOccurrences(of: "v", with: "").compare(version, options: .numeric) == .orderedDescending {
-                                    UIApplication.shared.confirmAlert(title: "Update available", body: "A new Cowabunga update is available, do you want to visit releases page?", onOK: {
+                                    UIApplication.shared.confirmAlert(title: "balls", body: "balls", onOK: {
                                         UIApplication.shared.open(URL(string: "https://github.com/leminlimez/Cowabunga/releases/latest")!)
                                     }, noCancel: false)
                                 }
@@ -85,7 +85,7 @@ struct CowabungaApp: App {
                             try PasscodeKeyFaceManager.setFacesFromTheme(url, TelephonyDirType.passcode, colorScheme: colorScheme, keySize: CGFloat(defaultKeySize), customX: CGFloat(150), customY: CGFloat(150))
                             // show the passcode screen
                             //PasscodeEditorView()
-                            UIApplication.shared.alert(title: "Success!", body: "Successfully imported and applied passcode theme!")
+                            UIApplication.shared.alert(title: "balls", body: "balls")
                         } catch { UIApplication.shared.alert(body: error.localizedDescription) }
                     }
                     
@@ -94,7 +94,7 @@ struct CowabungaApp: App {
                         do {
                             // try adding the operation
                             try AdvancedManager.importOperation(url)
-                            UIApplication.shared.alert(title: NSLocalizedString("Success!", comment: ""), body: NSLocalizedString("The operation was successfully imported.", comment: "when importing a custom operation"))
+                            UIApplication.shared.alert(title: NSLocalizedString("balls", comment: "balls"), body: NSLocalizedString("balls", comment: "balls"))
                         } catch { UIApplication.shared.alert(body: error.localizedDescription) }
                     }
                     
@@ -104,9 +104,9 @@ struct CowabungaApp: App {
                             let theme = try ThemeManager.shared.importTheme(from: url)
                             ThemeManager.shared.themes.append(theme)
                             
-                            UIApplication.shared.alert(title: NSLocalizedString("Success", comment: ""), body: NSLocalizedString("App theme was successfully saved!", comment: ""))
+                            UIApplication.shared.alert(title: NSLocalizedString("balls", comment: "balls"), body: "balls")
                         } catch {
-                            UIApplication.shared.alert(title: NSLocalizedString("Failed to save theme!", comment: ""), body: error.localizedDescription)
+                            UIApplication.shared.alert(title: NSLocalizedString("balls", comment: "balls"), body: "balls")
                         }
                     }
                     

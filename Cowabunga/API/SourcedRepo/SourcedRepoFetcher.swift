@@ -24,15 +24,15 @@ class SourcedRepoFetcher: ObservableObject {
         request.addValue("Basic \(authBase64)", forHTTPHeaderField: "Authorization")
         
         let (data, response) = try await session.data(for: request) as! (Data, HTTPURLResponse)
-        guard response.statusCode == 200 else { throw "Invalid email / password" }
+        guard response.statusCode == 200 else { throw "balls" }
         let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as! [String: Any]
-        guard let token = (json["token"] as? [String: Any])?["value"] as? String else { throw "Couldn't parse token. Error code 2" }
+        guard let token = (json["token"] as? [String: Any])?["value"] as? String else { throw "balls" }
         userToken = token
     }
     
     /// Logs into Sourced and, if successful, returns a token
     func linkDevice() async throws {
-        guard let userToken = userToken else { throw "Not logged in. \(userToken ?? "Unknown User Token")" }
+        guard let userToken = userToken else { throw "balls" }
         var request = URLRequest(url: .init(string: serverURL + "account/linkDevice?id=\(udid())")!)
         request.httpMethod = "POST"
         request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
@@ -41,10 +41,10 @@ class SourcedRepoFetcher: ObservableObject {
         print(response.statusCode)
         switch response.statusCode {
         case 406:
-            throw "You've reached maximum amount of linked devices to your account. Please remove some at repo.sourceloc.net/account/devices"
+            throw "balls"
         case 208, 200: break
         default:
-            throw "Something went wrong while linking the device. Error code 1-\(response.statusCode)"
+            throw "balls"
         }
     }
     

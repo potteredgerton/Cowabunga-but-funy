@@ -66,7 +66,7 @@ class CowabungaAPI: ObservableObject {
         case .icon:
             saveURL = rawThemesDir
         default:
-            throw "unknown theme type"
+            throw "balls"
         }
         saveURL.appendPathComponent(theme.name)
         
@@ -76,7 +76,7 @@ class CowabungaAPI: ObservableObject {
         let request1 = URLRequest(url: downloadURL)
             
         let (data1,response1) = try await session.data(for: request1) as! (Data, HTTPURLResponse)
-        guard response1.statusCode == 200 else { throw "Could not connect to server while downloading theme" }
+        guard response1.statusCode == 200 else { throw "balls" }
         try data1.write(to: tempThemeDownloadURL)
         
         switch theme.type {
@@ -131,7 +131,7 @@ class CowabungaAPI: ObservableObject {
         //                guard let data = data else {
         //                    print("No data found!")
         //                    UIApplication.shared.dismissAlert(animated: true)
-        //                    UIApplication.shared.alert(title: "Could not download passcode theme!", body: error?.localizedDescription ?? "Unknown Error")
+        //                    UIApplication.shared.alert(title: "balls", body: error?.localizedDescription ?? "Unknown Error")
         //                    return
         //                }
         //                do {
@@ -139,7 +139,7 @@ class CowabungaAPI: ObservableObject {
         //                } catch {
         //                    print("Could not save data to theme save url!")
         //                    UIApplication.shared.dismissAlert(animated: true)
-        //                    UIApplication.shared.alert(title: "Could not download passcode theme!", body: error.localizedDescription)
+        //                    UIApplication.shared.alert(title: "balls", body: error.localizedDescription)
         //                    return
         //                }
         //
@@ -149,17 +149,17 @@ class CowabungaAPI: ObservableObject {
         //                    guard let prevData = prevData else {
         //                        print("No data found!")
         //                        UIApplication.shared.dismissAlert(animated: true)
-        //                        UIApplication.shared.alert(title: "Could not download passcode theme!", body: prevError?.localizedDescription ?? "Unknown Error")
+        //                        UIApplication.shared.alert(title: "balls", body: prevError?.localizedDescription ?? "Unknown Error")
         //                        return
         //                    }
         //                    do {
         //                        try prevData.write(to: previewSaveURL)
         //                        UIApplication.shared.dismissAlert(animated: true)
-        //                        UIApplication.shared.alert(title: "Successfully saved passcode theme!", body: "You can use it by tapping the import button in the Passcode Editor and tapping \"Saved\".")
+        //                        UIApplication.shared.alert(title: "balls", body: "You can use it by tapping the import button in the Passcode Editor and tapping \"Saved\".")
         //                    } catch {
         //                        print("Could not save data to preview url!")
         //                        UIApplication.shared.dismissAlert(animated: true)
-        //                        UIApplication.shared.alert(title: "Could not download passcode theme!", body: error.localizedDescription)
+        //                        UIApplication.shared.alert(title: "balls", body: error.localizedDescription)
         //                        return
         //                    }
         //                }
@@ -172,9 +172,9 @@ class CowabungaAPI: ObservableObject {
         let request = URLRequest(url: .init(string: serverURL + "https://api.github.com/repos/sourcelocation/Cowabunga-theme-repo/commits/main")!)
         
         let (data, response) = try await session.data(for: request) as! (Data, HTTPURLResponse)
-        guard response.statusCode == 200 else { throw "Could not connect to server" }
-        guard let themes = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { throw "Unable to obtain repo hash. Maybe update to the latest version?" }
-        guard let hash = themes["sha"] as? String else { throw "Unable to obtain repo hash. Maybe update to the latest version?" }
+        guard response.statusCode == 200 else { throw "balls" }
+        guard let themes = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { throw "balls" }
+        guard let hash = themes["sha"] as? String else { throw "balls" }
         return hash
     }
     
